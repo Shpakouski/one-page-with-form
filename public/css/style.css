@@ -1,0 +1,86 @@
+/* Logo */
+header .logo {
+    max-height: 50px;
+}
+
+/* Navigation menu */
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav ul li {
+    margin-left: 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Shadow on hover for navigation items */
+header nav ul li a:hover {
+    color: #007bff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Phone number */
+header a.phone-link {
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+}
+
+header small.phone-link {
+    font-size: 0.875rem;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Language selector */
+#languageDropdown {
+    font-size: 1rem;
+    font-weight: normal;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+#languageDropdown:hover .language-icon {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Larger shadow */
+}
+
+/* Language icon */
+.language-icon {
+    font-size: 0.8rem; /* Increased size */
+    font-weight: bold;
+    transition: text-shadow 0.3s ease;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    font-size: 0.9rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile menu button */
+#mobileMenuToggle {
+    font-size: 1.25rem;
+}
+
+/* Mobile menu styles */
+#mobileMenu {
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#mobileMenu .nav-link {
+    padding: 10px 0;
+    font-size: 1rem;
+    border-bottom: 1px solid #e5e5e5;
+}
