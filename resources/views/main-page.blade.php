@@ -4,16 +4,32 @@
 
 @section('content')
     <div class="container">
-        <!-- Header -->
-        <header class="my-5 text-center">
-            <h1 class="fw-bold">Наши курьеры</h1>
-            <div class="d-flex flex-wrap justify-content-center gap-4 mt-3">
-                <img src="{{ asset('images/dpd.svg') }}" alt="DPD" class="img-fluid" style="max-width: 100px;">
-                <img src="{{ asset('images/gls.svg') }}" alt="GLS" class="img-fluid" style="max-width: 100px;">
-                <img src="{{ asset('images/dhl.svg') }}" alt="DHL" class="img-fluid" style="max-width: 100px;">
-                <img src="{{ asset('images/shopify.svg') }}" alt="Shopify" class="img-fluid" style="max-width: 100px;">
+        <section class="our-couriers-section py-5">
+            <div class="container d-flex flex-column flex-lg-row align-items-center">
+                <!-- First column -->
+                <div class="col-7 text-center text-lg-start mb-5 mb-lg-0">
+                    <h2 class="section-title mb-5">Наши курьеры</h2>
+                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+                        <!-- Blocks with logos -->
+                        @php
+                            $couriers = ['dpd','gls','dhl','shopify','woo','prestashop','ppl','posta','magento'];
+                        @endphp
+                        @foreach($couriers as $i)
+                            <div class="logo-block d-flex align-items-center justify-content-center">
+                                <img src="{{ asset('images/' . $i . '.png') }}" alt="Courier Logo" class="img-fluid">
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Second column -->
+                <div class="col-5">
+                    <div class="image-wrapper">
+                        <img src="{{ asset('images/box.jpg') }}" alt="Box Image" class="img-fluid">
+                    </div>
+                </div>
             </div>
-        </header>
+        </section>
 
         <!-- Form -->
         <section class="bg-light p-5 rounded">

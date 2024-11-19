@@ -30,7 +30,7 @@
                 <nav class="d-none d-lg-flex align-items-center">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a href="#about" class="nav-link text-dark">О нас</a>
+                            <a href="#about-us" class="nav-link text-dark">О нас</a>
                         </li>
                         <li class="nav-item">
                             <a href="#services" class="nav-link text-dark">Услуги</a>
@@ -51,9 +51,9 @@
                 <div class="d-flex align-items-center flex-wrap justify-content-between">
                     <!-- Phone number -->
                     <div class="text-center pe-2 pe-md-5">
-                        <a href="tel:+375291234567" class="fw-bold text-dark text-decoration-none phone-link">+375 29
-                            123-45-67</a>
-                        <small class="d-block text-dark phone-link" onclick="window.location.href='tel:+375291234567'">Позвонить</small>
+                        <a href="tel:+375290000000" class="fw-bold text-dark text-decoration-none phone-link">+375 29
+                            000-00-00</a>
+                        <small class="d-block text-dark phone-link" onclick="window.location.href='tel:+375290000000'">Позвонить</small>
                     </div>
 
                     <!-- Language selector -->

@@ -84,3 +84,51 @@ header small.phone-link {
     font-size: 1rem;
     border-bottom: 1px solid #e5e5e5;
 }
+
+/* Our Couriers Section */
+
+.section-title {
+    font-family: "Averta CY", sans-serif;
+    color: #2E2E2E;
+}
+
+.logo-block {
+    width: 232px;
+    height: 104px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 8px; /* Optional for smoother corners */
+}
+
+.logo-block img {
+    max-width: 80%; /* Adjust logo size within the block */
+    max-height: 80%;
+}
+
+/* Second column image */
+.image-wrapper {
+    height: 100%; /* Matches the row height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* Keeps the image proportions */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .image-wrapper {
+        height: auto; /* Allow image wrapper to adapt height */
+    }
+
+    .image-wrapper img {
+        max-height: none;
+    }
+}
