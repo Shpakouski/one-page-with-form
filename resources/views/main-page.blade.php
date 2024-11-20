@@ -3,8 +3,8 @@
 @section('title', 'Главная страница')
 
 @section('content')
-    <div class="container">
-        <section class="our-couriers-section py-5">
+    <section class="our-couriers-section py-5">
+        <div class="container">
             <div class="container d-flex flex-column flex-lg-row align-items-center">
                 <!-- First column -->
                 <div class="col-7 text-center text-lg-start mb-5 mb-lg-0">
@@ -29,93 +29,108 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Form -->
-        <section class="bg-light p-5 rounded">
-            <h2 class="text-center mb-4">Ищете лучшую оферту?</h2>
+    <section class="form-section py-5">
+        <div class="container-fluid d-flex align-items-center justify-content-center">
+            <div class="row w-100">
+                <div class="col-lg-6 mx-auto">
+                    <div class="form-wrapper">
+                        <div id="form-message" class="alert d-none"></div>
+                        <form action="{{ route('form.submit') }}" method="POST" id="mainForm" class="p-4">
+                            @csrf
+                            <h2 class="form-title mb-3">Вы ищете лучшее предложение?</h2>
+                            <p class="form-description mb-4">
+                                Оставьте заявку и наш менеджер свяжется с вами для консультации.
+                            </p>
 
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
+                            <!-- Name, Surname, Patronymic -->
+                            <div class="d-flex gap-3 mb-3">
+                                <div class="flex-grow-1">
+                                    <label for="name" class="form-label">Имя</label>
+                                    <input type="text" id="name" name="name" class="form-control" required>
+                                    <div class="error-message text-danger" style="min-height: 1rem;"></div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <label for="surname" class="form-label">Фамилия</label>
+                                    <input type="text" id="surname" name="surname" class="form-control" required>
+                                    <div class="error-message text-danger" style="min-height: 1rem;"></div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <label for="patronymic" class="form-label">Отчество</label>
+                                    <input type="text" id="patronymic" name="patronymic" class="form-control">
+                                    <div class="error-message text-danger" style="min-height: 1rem;"></div>
+                                </div>
+                            </div>
 
-            <form action="{{ route('form.submit') }}" method="POST" class="needs-validation" novalidate>
-                @csrf
-                <div class="row">
-                    <!-- Name -->
-                    <div class="col-md-4 mb-3">
-                        <label for="first_name" class="form-label">Имя *</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" value="{{ old('first_name') }}" required>
+                            <!-- Birthdate -->
+                            <div class="mb-3">
+                                <label for="birthdate" class="form-label">Дата рождения</label>
+                                <input type="date" id="birthdate" name="birthdate" class="form-control" required>
+                                <div class="error-message text-danger" style="min-height: 1rem;"></div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" name="email" class="form-control">
+                                <div class="error-message text-danger" style="min-height: 1rem;"></div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Телефон</label>
+                                <div id="phone-container">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <select name="country_code[]" class="form-control w-auto me-2">
+                                            <option value="+375">🇧🇾 +375</option>
+                                            <option value="+7">🇷🇺 +7</option>
+                                            <option value="+1">🇺🇸 +1</option>
+                                        </select>
+                                        <input type="tel" name="phone[]" class="form-control flex-grow-1">
+                                        <button type="button" class="btn btn-add-phone ms-2 text-white border-0">+</button>
+                                    </div>
+                                </div>
+                                <div class="error-message text-danger" style="min-height: 1rem;"></div>
+                            </div>
+
+                            <!-- Marital Status -->
+                            <div class="mb-3">
+                                <label for="marital_status" class="form-label">Семейное положение</label>
+                                <select id="marital_status" name="marital_status" class="form-control" required>
+                                    <option value="single">Холост/не замужем</option>
+                                    <option value="married">Женат/замужем</option>
+                                    <option value="divorced">В разводе</option>
+                                    <option value="widowed">Вдовец/вдова</option>
+                                </select>
+                                <div class="error-message text-danger" style="min-height: 1rem;"></div>
+                            </div>
+
+                            <!-- About -->
+                            <div class="mb-3">
+                                <label for="about" class="form-label">О себе</label>
+                                <textarea id="about" name="about" class="form-control" rows="1" style="max-height: 7rem;"></textarea>
+                                <div class="error-message text-danger" style="min-height: 1rem;"></div>
+                            </div>
+
+                            <!-- Checkbox and Submit button -->
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="form-check">
+                                    <input type="checkbox" id="rules" name="rules" class="form-check-input" required>
+                                    <label for="rules" class="form-check-label">Я ознакомился с правилами</label>
+                                    <div class="error-message text-danger" style="min-height: 1rem;"></div>
+                                </div>
+                                <button type="submit" id="submitBtn" class="btn submit-btn" disabled>Отправить</button>
+                            </div>
+
+                            <!-- Combined Email/Phone Error -->
+                            <div class="error-message text-danger mt-2" id="email-phone-error" style="min-height: 1rem;"></div>
+                        </form>
                     </div>
-                    <!-- Last name -->
-                    <div class="col-md-4 mb-3">
-                        <label for="last_name" class="form-label">Фамилия *</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" value="{{ old('last_name') }}" required>
-                    </div>
-                    <!-- Patronymic -->
-                    <div class="col-md-4 mb-3">
-                        <label for="middle_name" class="form-label">Отчество</label>
-                        <input type="text" class="form-control" id="middle_name" name="middle_name" value="{{ old('middle_name') }}">
-                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="row">
-                    <!-- Birth date -->
-                    <div class="col-md-6 mb-3">
-                        <label for="birth_date" class="form-label">Дата рождения *</label>
-                        <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{ old('birth_date') }}" required>
-                    </div>
-                    <!-- Email -->
-                    <div class="col-md-6 mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
-                    </div>
-                </div>
-
-                <!-- Phones -->
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Телефон *</label>
-                    <div id="phoneContainer">
-                        <div class="d-flex align-items-center mb-2">
-                            <select class="form-select" name="phone[0][country_code]" style="width: 100px;">
-                                <option value="+375">+375</option>
-                                <option value="+7">+7</option>
-                            </select>
-                            <input type="tel" class="form-control ms-2" name="phone[0][number]" placeholder="123 456 789" required>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-secondary btn-sm" id="addPhone">+ Добавить номер</button>
-                </div>
-
-                <!-- Marital status -->
-                <div class="mb-3">
-                    <label for="marital_status" class="form-label">Семейное положение *</label>
-                    <select class="form-select" id="marital_status" name="marital_status" required>
-                        <option value="">Выберите...</option>
-                        <option value="single">Холост/не замужем</option>
-                        <option value="married">Женат/замужем</option>
-                        <option value="divorced">В разводе</option>
-                        <option value="widowed">Вдовец/вдова</option>
-                    </select>
-                </div>
-
-                <!-- About -->
-                <div class="mb-3">
-                    <label for="about" class="form-label">О себе</label>
-                    <textarea class="form-control" id="about" name="about" rows="5" maxlength="1000">{{ old('about') }}</textarea>
-                </div>
-
-                <!-- Checkbox -->
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" id="agree" name="agree" required>
-                    <label class="form-check-label" for="agree">Я ознакомился с правилами *</label>
-                </div>
-
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary" id="submitButton" disabled>Отправить</button>
-            </form>
-        </section>
-    </div>
 @endsection
