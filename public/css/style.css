@@ -277,4 +277,93 @@ select.form-control.error {
 }
 
 
+.footer-section {
+    background-color: #F9F9F9;
+    padding-top: 3rem;
+    font-family: "Arial", sans-serif;
+}
+
+/* Logo */
+.footer-logo img {
+    max-width: 100%;
+}
+
+/* Contact information */
+.footer-contact {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #7A5B9E;
+    margin-bottom: 1rem;
+}
+
+.text-primary {
+    color: #7A5B9E;
+}
+
+.text-accent {
+    color: #78599C;
+    text-decoration: underline;
+}
+
+.text-accent:hover {
+    color: #6A4E89;
+}
+
+/* Footer title */
+.footer-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2E2E2E;
+    margin-bottom: 1rem;
+}
+
+/* Footer links */
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-link {
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.text-dark {
+    color: #2E2E2E;
+}
+
+.text-dark:hover {
+    color: #6A4E89;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-muted {
+    color: #BCBCBC;
+}
+
+/* Footer bottom */
+.footer-bottom {
+    margin-top: 3rem;
+    padding: 2rem 0;
+    border-top: 1px solid #E8E8E8;
+    font-size: 0.875rem;
+}
+
+.footer-bottom .footer-link {
+    text-decoration: underline;
+}
+
+.footer-bottom .footer-link:hover {
+    color: #6A4E89;
+}
 
